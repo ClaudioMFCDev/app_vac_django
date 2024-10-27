@@ -1,9 +1,17 @@
 
 {% extends 'base/base.html' %}
 
-{% block contenido %}
-    <h1>Bienvenido a la página de inicio</h1>
-{% endblock contenido %}
+    {% block contenido %}
+        {% csrf_token %}
+            {% if user.is_authenticated %}
+            
+                <h1>Bienvenido {{user}} a la página de inicio</h1>
+                <!-- <h1>{{user.is_authenticated}}</h1> -->
+            {% else %}
+                <h1>Bienvenido a la página de inicio</h1>
+                <p>click <a href="">aqui</a> para iniciar sesión</p>
+            {% endif%}
+    {% endblock contenido %}
 
 
 
